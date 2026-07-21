@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🔥 Realistic Vision + Photorealistic — Chân Thật 100%</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+        body {
+            background: #0d0d1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 750px;
+            width: 100%;
+            background: #1a1a2e;
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.9);
+            text-align: center;
+        }
+        h1 {
+            color: #f0e6ff;
+            font-size: 26px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 4px;
+        }
+        h1 span { color: #ff6b9d; }
+        .sub {
+            color: #8a8ab0;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .sub strong { color: #fff; }
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .input-group textarea {
+            padding: 16px;
+            border-radius: 16px;
+            border: 1px solid #3a3a6a;
+            background: #111127;
+            color: #f0e6ff;
+            font-size: 15px;
+            resize: vertical;
+            min-height: 110px;
+            outline: none;
+            transition: 0.2s;
+        }
+        .input-group textarea:focus {
+            border-color: #a07eff;
+            box-shadow: 0 0 0 3px #6a4aff66;
+        }
+        .input-group textarea::placeholder {
+            color: #5a5a8a;
+        }
+        .options-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin: 6px 0;
+        }
+        .ratio-btn {
+            padding: 10px 20px;
+            border-radius: 40px;
+            border: 2px solid #3a3a6a;
+            background: transparent;
+            color: #b8b0d6;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.2s;
+            flex: 0 1 auto;
+        }
+        .ratio-btn:hover {
+            border-color: #a07eff;
+            color: #fff;
+            background: #2a2a5a;
+        }
+        .ratio-btn.active {
+            border-color: #ff6b9d;
+            background: #ff6b9d33;
+            color: #ff6b9d;
+            box-shadow: 0 0 15px #ff6b9d44;
+        }
+        .btn-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 8px 0;
+        }
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 4px 0 #0b0b1a;
+            flex: 1 1 auto;
+            min-width: 110px;
+        }
+        .btn-primary {
+            background: linear-gradient(145deg, #a07eff, #7a5af0);
+            color: #0b0b1a;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #0b0b1a;
+        }
+        .btn-danger {
+            background: #ff6b9d;
+            color: #0b0b1a;
+        }
+        .btn-danger:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #0b0b1a;
+        }
+        .btn-success {
+            background: #4ae0a0;
+            color: #0b0b1a;
+        }
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 0 #0b0b1a;
+        }
+        .result-area {
+            margin-top: 24px;
+            background: #111127;
+            border-radius: 20px;
+            padding: 20px;
+            min-height: 180px;
+            border: 1px solid #2a2a4a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .result-area img {
+            max-width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            margin: 10px 0;
+        }
+        .result-area .placeholder {
+            color: #5a5a8a;
+            font-size: 15px;
+        }
+        .result-area .loading {
+            color: #a07eff;
+            font-size: 16px;
+            font-weight: 600;
+            animation: pulse 1.2s infinite;
+        }
+        @keyframes pulse {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; }
+            100% { opacity: 0.4; }
+        }
+        .note {
+            color: #4a4a6a;
+            font-size: 12px;
+            margin-top: 16px;
+            border-top: 1px solid #1f1f3a;
+            padding-top: 16px;
+        }
+        .note span { color: #ff6b9d; font-weight: 700; }
+        .selected-info {
+            color: #8a8ab0;
+            font-size: 14px;
+            margin: 4px 0 8px;
+        }
+        .selected-info strong { color: #fff; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🔥 Realistic Vision + <span>Photorealistic</span></h1>
+    <p class="sub">📸 Chọn tỉ lệ ảnh — 1:1, 4:3, 16:9, 3:2, 2:3</p>
+
+    <div class="input-group">
+        <textarea id="promptInput" placeholder="Nhập mô tả...">Một cô gái trẻ đẹp, tóc dài, da trắng mịn, đứng trước cửa sổ ánh sáng ban ngày, mặc váy mỏng màu trắng, vẻ mặt gợi cảm</textarea>
+
+        <!-- Chọn tỉ lệ -->
+        <div class="options-row" id="ratioGroup">
+            <button class="ratio-btn active" data-ratio="1:1" data-w="768" data-h="768">⬜ 1:1</button>
+            <button class="ratio-btn" data-ratio="4:3" data-w="768" data-h="576">🟨 4:3</button>
+            <button class="ratio-btn" data-ratio="16:9" data-w="768" data-h="432">🟦 16:9</button>
+            <button class="ratio-btn" data-ratio="3:2" data-w="768" data-h="512">🟧 3:2</button>
+            <button class="ratio-btn" data-ratio="2:3" data-w="512" data-h="768">🟪 2:3</button>
+        </div>
+        <div class="selected-info">Tỉ lệ hiện tại: <strong id="currentRatioLabel">1:1</strong> (768×768)</div>
+
+        <div class="btn-row">
+            <button class="btn btn-primary" id="generateBtn">🎨 Tạo ảnh</button>
+            <button class="btn btn-danger" id="clearBtn">🗑️ Xoá</button>
+            <button class="btn btn-success" id="downloadBtn">⬇️ Tải xuống</button>
+        </div>
+    </div>
+
+    <div class="result-area" id="resultArea">
+        <div class="placeholder">📸 Nhập prompt, chọn tỉ lệ, nhấn "Tạo ảnh"</div>
+    </div>
+
+    <div class="note">
+        ⚡ Model: <span>Realistic Vision V5.1</span> · Prompt <span>Photorealistic</span> · Ảnh chân thật 100%
+    </div>
+</div>
+
+<script>
+    (function() {
+        const promptInput = document.getElementById('promptInput');
+        const generateBtn = document.getElementById('generateBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const resultArea = document.getElementById('resultArea');
+        const ratioGroup = document.getElementById('ratioGroup');
+        const currentRatioLabel = document.getElementById('currentRatioLabel');
+
+        let currentImageUrl = null;
+
+        // State tỉ lệ mặc định
+        let selectedWidth = 768;
+        let selectedHeight = 768;
+        let selectedRatio = '1:1';
+
+        // Xử lý chọn tỉ lệ
+        ratioGroup.addEventListener('click', (e) => {
+            const btn = e.target.closest('.ratio-btn');
+            if (!btn) return;
+
+            document.querySelectorAll('.ratio-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            selectedWidth = parseInt(btn.dataset.w);
+            selectedHeight = parseInt(btn.dataset.h);
+            selectedRatio = btn.dataset.ratio;
+            currentRatioLabel.textContent = `${selectedRatio} (${selectedWidth}×${selectedHeight})`;
+        });
+
+        // Build prompt photorealistic
+        function buildUltimatePrompt(raw) {
+            const base = raw.trim();
+            if (base.toLowerCase().includes('photorealistic') || base.toLowerCase().includes('hyperrealistic')) {
+                return base;
+            }
+            return `${base}, photorealistic, hyperrealistic, 8k, sharp focus, natural lighting, detailed skin texture, pores, fine hair strands, realistic eyes, shallow depth of field, DSLR photography, highly detailed, masterpiece, best quality, cinematic lighting, soft shadows, true-to-life`;
+        }
+
+        async function generateImage() {
+            const raw = promptInput.value.trim();
+            if (!raw) {
+                resultArea.innerHTML = `<div class="placeholder">⚠️ Nhập mô tả đi!</div>`;
+                return;
+            }
+
+            const finalPrompt = buildUltimatePrompt(raw);
+            resultArea.innerHTML = `<div class="loading">⏳ Đang tạo ${selectedRatio} — Realistic Vision + Photorealistic...</div>`;
+
+            try {
+                const response = await fetch(
+                    'https://api-inference.huggingface.co/models/SG161222/Realistic_Vision_V5.1_noVAE',
+                    {
+                        headers: {
+                            'Authorization': 'Bearer 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',
+                            'Content-Type': 'application/json'
+                        },
+                        method: 'POST',
+                        body: JSON.stringify({
+                            inputs: finalPrompt,
+                            parameters: {
+                                negative_prompt: 'anime, cartoon, painting, drawing, 3d render, cgi, fake, low quality, blurry, distorted, ugly, unrealistic, plastic, smooth skin, airbrush, overexposed, underexposed, bad anatomy, bad proportions, extra limbs, missing limbs, bad face, bad eyes, bad hands, watercolor, sketch, abstract, illustration',
+                                guidance_scale: 10.0,
+                                num_inference_steps: 60,
+                                width: selectedWidth,
+                                height: selectedHeight
+                            }
+                        })
+                    }
+                );
+
+                if (!response.ok) {
+                    const errText = await response.text();
+                    throw new Error(`API lỗi ${response.status}: ${errText}`);
+                }
+
+                const blob = await response.blob();
+                const imageUrl = URL.createObjectURL(blob);
+                currentImageUrl = imageUrl;
+
+                resultArea.innerHTML = `<img src="${imageUrl}" alt="${selectedRatio} — Realistic Vision + Photorealistic" />`;
+
+            } catch (err) {
+                console.error('Lỗi:', err);
+                resultArea.innerHTML = `
+                    <div class="placeholder" style="color:#ff6b9d;">
+                        ❌ Lỗi: ${err.message}<br />
+                        <span style="font-size:13px;color:#8a8ab0;">
+                            Kiểm tra API key hoặc thử lại sau.
+                        </span>
+                    </div>
+                `;
+            }
+        }
+
+        function clearImage() {
+            if (currentImageUrl) {
+                URL.revokeObjectURL(currentImageUrl);
+                currentImageUrl = null;
+            }
+            resultArea.innerHTML = `<div class="placeholder">🗑️ Đã xoá. Prompt mới đi!</div>`;
+        }
+
+        function downloadImage() {
+            if (!currentImageUrl) {
+                alert('Tạo ảnh trước đã!');
+                return;
+            }
+            const link = document.createElement('a');
+            link.download = `realistic_${selectedRatio}_${Date.now()}.png`;
+            link.href = currentImageUrl;
+            link.click();
+        }
+
+        generateBtn.addEventListener('click', generateImage);
+        clearBtn.addEventListener('click', clearImage);
+        downloadBtn.addEventListener('click', downloadImage);
+
+        promptInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                generateImage();
+            }
+        });
+
+        console.log('🔥 Realistic Vision + Photorealistic — Token đã được dán sẵn!');
+    })();
+</script>
+
+</body>
+</html>
